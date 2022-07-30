@@ -1,0 +1,18 @@
+<p>servers works!</p>
+<div class="container">
+  <div class="form">
+    <input type="text" [(ngModel)]="serverName" />
+    <p>{{ serverName }}</p>
+    <button
+      class="btn btn-primary"
+      [disabled]="!AllowServer"
+      (click)="onCreateServer()"
+    >
+      Add Server
+    </button>
+    <p *ngIf="serverCreated">
+      Server was Created server name is {{ serverName }}
+    </p>
+    <p>{{ serverCreationStatus }}</p>
+  </div>
+</div>
