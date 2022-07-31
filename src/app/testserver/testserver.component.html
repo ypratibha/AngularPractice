@@ -1,0 +1,13 @@
+<p [ngStyle]="{ backgroundColor: 'yellow', color: 'green' }">
+  New testserver Component works!
+</p>
+
+<p
+  [ngStyle]="{ backgroundColor: getColor() }"
+  [ngClass]="{ online: serverStatus === 'online' }"
+>
+  {{ "First Server" }} status is {{ serverStatus }}
+</p>
+<p [ngStyle]="{ backgroundColor: getColor() }">
+  {{ "Second Server" }} status is {{ serverStatus }}
+</p>

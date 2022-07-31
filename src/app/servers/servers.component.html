@@ -1,18 +1,49 @@
 <p>servers works!</p>
+<ng-template> rendering the content inside the template </ng-template>
 <div class="container">
   <div class="form">
     <input type="text" [(ngModel)]="serverName" />
     <p>{{ serverName }}</p>
     <button
       class="btn btn-primary"
-      [disabled]="!AllowServer"
-      (click)="onCreateServer()"
+      [disabled]="!allowServer"
+      (click)="onAddStudent()"
     >
       Add Server
     </button>
-    <p *ngIf="serverCreated">
+    <p *ngIf="serverCreated; else serverNotCreated">
       Server was Created server name is {{ serverName }}
     </p>
-    <p>{{ serverCreationStatus }}</p>
+    <ng-template #serverNotCreated> Server yet to create </ng-template>
+    <!-- <p>{{ serverCreationStatus }}</p> -->
   </div>
+  <div>
+    list of student names
+    <li *ngFor="let student of studentNames">
+      {{ student }}
+    </li>
+  </div>
+
+  <table *ngIf="studentList.length > 0; else noData">
+    <tr>
+      <th>id</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Sex</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let stu of studentList; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ stu.name }}</td>
+      <th>{{ stu.age }}</th>
+      <th>{{ stu.sex }}</th>
+      <td><button (click)="onDelete(stu, i)">Delete</button></td>
+    </tr>
+  </table>
+
+  <ng-template #noData>No Data available</ng-template>
+  <p>{{ dataDelete }}</p>
+  <hr />
+  <app-testserver></app-testserver>
+  <app-testserver></app-testserver>
 </div>
